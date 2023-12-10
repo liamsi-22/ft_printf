@@ -6,7 +6,7 @@
 /*   By: iel-fagh <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 10:30:34 by iel-fagh          #+#    #+#             */
-/*   Updated: 2023/12/09 10:05:34 by iel-fagh         ###   ########.fr       */
+/*   Updated: 2023/12/10 17:44:45 by iel-fagh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,11 @@
 
 int	ft_strchr(const char *s, int c)
 {
-	while ((*s != (char)c) && (*s != '\0'))
+	while (*s)
+	{
+		if (*s == (char)c)
+			return (1);
 		s++;
-	if (*s == (char)c)
-		return (1);
-	else
-		return (0);
+	}
+	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: iel-fagh <iel-fagh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 09:05:11 by iel-fagh          #+#    #+#             */
-/*   Updated: 2023/12/09 12:51:17 by iel-fagh         ###   ########.fr       */
+/*   Updated: 2023/12/10 17:57:52 by iel-fagh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,11 +52,8 @@ int	ft_printf(const char *format, ...)
 	{
 		if (format[i] == '%')
 		{
-			i++;
-			if (ft_strchr("cspdiuxX%", format[i]))
-				counter += print_format(format[i], ap);
-			else if (!format[i])
-				break ;
+			if (ft_strchr("cspdiuxX%", format[i + 1]))
+				counter += print_format(format[++i], ap);
 		}
 		else
 			counter += ft_putchar(format[i]);
