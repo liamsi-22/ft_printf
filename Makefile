@@ -6,33 +6,36 @@
 #    By: pclaus <pclaus@student.s19.be>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/17 18:03:33 by pclaus            #+#    #+#              #
-#    Updated: 2023/12/09 12:53:05 by iel-fagh         ###   ########.fr        #
+#    Updated: 2023/12/10 09:54:23 by iel-fagh         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libftprintf.a
 
-SRC = ft_putchar.c ft_printf.c ft_strchr.c ft_putnbr.c ft_putstr.c ft_hex_lower.c ft_hex_upper.c ft_unsigned_int.c 
+SRC = ft_printf.c ft_putchar.c ft_strchr.c ft_putnbr.c ft_putstr.c ft_hex_lower.c ft_hex_upper.c ft_unsigned_int.c 
 
 OBJ = $(SRC:.c=.o)
 
 CC = cc
 
-FLAGS = -Wall -Wextra -Werror
+RV = rm
+
+CFLAGS = -Wall -Wextra -Werror
+
+LIB = ar -rc
 
 all : $(NAME)
 
 $(NAME) : $(OBJ)
-	ar -rc $(NAME) $(OBJ)
+	$(LIB) $@ $^
+
+.o : .c
+	$(CC) $(CFALGS) -c $^ -o $@
 
 clean:
-	rm -f $(OBJ)
+	$(RV) -rf $(OBJ)
 
 fclean: clean
-	rm -f $(NAME)
+	$(RV) -rf $(NAME)
 
 re: fclean all
-
-
-
-
